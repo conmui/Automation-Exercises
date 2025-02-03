@@ -29,8 +29,7 @@ public class TestCase4 extends BaseTest {
         verifyHeaderVisible(By.cssSelector(".login-form h2"), "Login to your account");
 
 //6. Enter correct email address and password
-        fillInput(By.cssSelector("[data-qa='login-email']"), email);
-        fillInput(By.cssSelector("[data-qa='login-password']"), password);
+        logIn(email, password);
 
 //7. Click 'login' button
         clickBtn(By.cssSelector("[data-qa='login-button']"));

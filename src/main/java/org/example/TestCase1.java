@@ -9,7 +9,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
 
 public class TestCase1 extends BaseTest {
     @Test
@@ -47,8 +46,7 @@ public class TestCase1 extends BaseTest {
         verifyHeaderVisible(By.cssSelector(".signup-form h2"), "New User Signup!");
 
 //6. Enter name and email address
-        fillInput(By.cssSelector("[data-qa='signup-name']"), username);
-        fillInput(By.cssSelector("[data-qa='signup-email']"), email);
+        signUp(username, email);
 
 //7. Click 'Signup' button
         clickBtn(By.cssSelector("[data-qa='signup-button']"));

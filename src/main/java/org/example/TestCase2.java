@@ -1,15 +1,7 @@
 package org.example;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.time.Duration;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
 
 public class TestCase2 extends BaseTest {
 //Test Case 2: Login User with correct email and password
@@ -34,8 +26,7 @@ public class TestCase2 extends BaseTest {
         verifyHeaderVisible(By.cssSelector(".login-form h2"), "Login to your account");
 
 //6. Enter correct email address and password
-        fillInput(By.cssSelector("[data-qa='login-email']"), email);
-        fillInput(By.cssSelector("[data-qa='login-password']"), password);
+        logIn(email, password);
 
 //7. Click 'login' button
         clickBtn(By.cssSelector("[data-qa='login-button']"));

@@ -62,4 +62,14 @@ public class BaseTest {
         Select select = new Select(dropdown);
         select.selectByValue(fieldValue);
     }
+
+    public void logIn(String email, String password) {
+        fillInput(By.cssSelector("[data-qa='login-email']"), email);
+        fillInput(By.cssSelector("[data-qa='login-password']"), password);
+    }
+
+    public void signUp(String username, String email) {
+        fillInput(By.cssSelector("[data-qa='signup-name']"), username);
+        fillInput(By.cssSelector("[data-qa='signup-email']"), email);
+    }
 }
