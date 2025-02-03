@@ -11,10 +11,14 @@ import org.openqa.selenium.support.ui.Select;
 
 public class BaseTest {
     WebDriver driver;
+    User testUser;
+    User testUserIncorrect;
 
     @BeforeEach
     public void setup() {
         driver = new ChromeDriver();
+        testUser = new User("abck", "abck@email.com", "itsalwayssunny", "9", "2", "1976", "Charlie", "Kelly", "Paddy's Pub", "544 Mateo Street", "", "United States", "California", "Los Angeles", "90013", "2136265731");
+        testUserIncorrect = new User("abckk", "abckk@email.com", "itsAlwaysSunny0");
     }
 
     @AfterEach
