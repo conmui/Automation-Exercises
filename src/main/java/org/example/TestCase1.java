@@ -11,14 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class TestCase1 {
-    WebDriver driver;
-
-    @BeforeEach
-    public void setup() {
-        driver = new ChromeDriver();
-    }
-
+public class TestCase1 extends BaseTest {
     @Test
 //Test Case 1: Register User
     public void registerUserTest() {
@@ -112,42 +105,5 @@ public class TestCase1 {
 //18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
         verifyHeaderVisible(By.cssSelector("[data-qa='account-deleted']"), "ACCOUNT DELETED!");
         clickBtn(By.cssSelector("[data-qa='continue-button']"));
-    }
-
-    @AfterEach
-    public void teardown() {
-        driver.quit();
-    }
-
-    public void clickBtn(By locator) {
-        WebElement button = driver.findElement(locator);
-        button.click();
-    }
-
-    public void verifyHeaderVisible(By locator, String expectedText) {
-        WebElement headerElem = driver.findElement(locator);
-        boolean isVisible = headerElem.isDisplayed();
-        String headerText = headerElem.getText();
-
-        assertTrue(isVisible);
-        assertEquals(expectedText, headerText);
-    }
-
-    public void fillInput(By locator, String fieldValue) {
-        WebElement inputField = driver.findElement(locator);
-        inputField.clear();
-        inputField.sendKeys(fieldValue);
-    }
-
-    public void selectOption(By locator) {
-        WebElement option = driver.findElement(locator);
-        boolean isChecked = option.isSelected();
-        if (!isChecked) { option.click(); }
-    }
-
-    public void selectDropdown(By locator, String fieldValue) {
-        WebElement dropdown = driver.findElement(locator);
-        Select select = new Select(dropdown);
-        select.selectByValue(fieldValue);
     }
 }
