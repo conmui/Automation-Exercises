@@ -38,12 +38,7 @@ public class TestCase1 extends BaseTest {
         driver.get("http://automationexercise.com");
 
 //3. Verify that home page is visible successfully
-        String title = driver.getTitle();
-        WebElement logoElement = driver.findElement(By.className("logo"));
-        boolean isLogoVisible = logoElement.isDisplayed();
-
-        assertEquals("Automation Exercise", title);
-        assertTrue(isLogoVisible);
+        verifyHomepageVisible();
 
 //4. Click on 'Signup / Login' button
         clickBtn(By.linkText("Signup / Login"));
@@ -62,30 +57,12 @@ public class TestCase1 extends BaseTest {
         verifyHeaderVisible(By.cssSelector(".login-form h2"), "ENTER ACCOUNT INFORMATION");
 
 //9. Fill details: Title, Name, Email, Password, Date of birth
-        selectOption(By.id("uniform-id_gender1"));
-//        selectOption(By.id("uniform-id_gender2"));
-        fillInput(By.cssSelector("[data-qa='password']"), password);
-        selectDropdown(By.cssSelector("[data-qa='days']"), day);
-        selectDropdown(By.cssSelector("[data-qa='months']"), month);
-        selectDropdown(By.cssSelector("[data-qa='years']"), year);
-
 //10. Select checkbox 'Sign up for our newsletter!'
-        selectOption(By.id("newsletter"));
-
 //11. Select checkbox 'Receive special offers from our partners!'
-        selectOption(By.id("optin"));
+        enterAccountInformation(password, day, month, year);
 
 //12. Fill details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number
-        fillInput(By.cssSelector("[data-qa='first_name']"), firstName);
-        fillInput(By.cssSelector("[data-qa='last_name']"), lastName);
-        fillInput(By.cssSelector("[data-qa='company']"), company);
-        fillInput(By.cssSelector("[data-qa='address']"), address);
-        fillInput(By.cssSelector("[data-qa='address2']"), address2);
-        selectDropdown(By.cssSelector("[data-qa='country']"), country);
-        fillInput(By.cssSelector("[data-qa='state']"), state);
-        fillInput(By.cssSelector("[data-qa='city']"), city);
-        fillInput(By.cssSelector("[data-qa='zipcode']"), zipCode);
-        fillInput(By.cssSelector("[data-qa='mobile_number']"), mobileNumber);
+        enterAddressInformation(firstName, lastName, company, address, address2, country, state, city, zipCode, mobileNumber);
 
 //13. Click 'Create Account button'
         clickBtn(By.cssSelector("[data-qa='create-account']"));
@@ -105,5 +82,38 @@ public class TestCase1 extends BaseTest {
 //18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
         verifyHeaderVisible(By.cssSelector("[data-qa='account-deleted']"), "ACCOUNT DELETED!");
         clickBtn(By.cssSelector("[data-qa='continue-button']"));
+    }
+
+    private void verifyHomepageVisible() {
+        String title = driver.getTitle();
+        WebElement logoElement = driver.findElement(By.className("logo"));
+        boolean isLogoVisible = logoElement.isDisplayed();
+
+        assertEquals("Automation Exercise", title);
+        assertTrue(isLogoVisible);
+    }
+
+    private void enterAccountInformation(String password, String day, String month, String year) {
+        selectOption(By.id("uniform-id_gender1"));
+//        selectOption(By.id("uniform-id_gender2"));
+        fillInput(By.cssSelector("[data-qa='password']"), password);
+        selectDropdown(By.cssSelector("[data-qa='days']"), day);
+        selectDropdown(By.cssSelector("[data-qa='months']"), month);
+        selectDropdown(By.cssSelector("[data-qa='years']"), year);
+        selectOption(By.id("newsletter"));
+        selectOption(By.id("optin"));
+    }
+
+    private void enterAddressInformation(String firstName, String lastName, String company, String address, String address2, String country, String state, String city, String zipCode, String mobileNumber) {
+        fillInput(By.cssSelector("[data-qa='first_name']"), firstName);
+        fillInput(By.cssSelector("[data-qa='last_name']"), lastName);
+        fillInput(By.cssSelector("[data-qa='company']"), company);
+        fillInput(By.cssSelector("[data-qa='address']"), address);
+        fillInput(By.cssSelector("[data-qa='address2']"), address2);
+        selectDropdown(By.cssSelector("[data-qa='country']"), country);
+        fillInput(By.cssSelector("[data-qa='state']"), state);
+        fillInput(By.cssSelector("[data-qa='city']"), city);
+        fillInput(By.cssSelector("[data-qa='zipcode']"), zipCode);
+        fillInput(By.cssSelector("[data-qa='mobile_number']"), mobileNumber);
     }
 }
