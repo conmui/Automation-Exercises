@@ -9,10 +9,7 @@ public class TestCase4 extends BaseTest {
 //Test Case 4: Logout User
     @Test
     public void logoutTest() {
-        String username = "abck";
-        String email = "abck@email.com";
-        String password = "itsalwayssunny";
-        String loggedInStatus = "Logged in as " + username;
+        String loggedInStatus = "Logged in as " + testUser.getUsername();
 
 //1. Launch browser
 //2. Navigate to url 'http://automationexercise.com'
@@ -29,7 +26,7 @@ public class TestCase4 extends BaseTest {
         verifyHeaderVisible(By.cssSelector(".login-form h2"), "Login to your account");
 
 //6. Enter correct email address and password
-        logIn(email, password);
+        logIn(testUser.getEmail(), testUser.getPassword());
 
 //7. Click 'login' button
         clickBtn(By.cssSelector("[data-qa='login-button']"));

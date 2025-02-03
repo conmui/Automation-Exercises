@@ -14,23 +14,6 @@ public class TestCase1 extends BaseTest {
     @Test
 //Test Case 1: Register User
     public void registerUserTest() {
-        String username = "abck";
-        String email = "abck@email.com";
-        String password = "itsalwayssunny";
-        String day = "9";
-        String month = "2";
-        String year = "1976";
-        String firstName = "Charlie";
-        String lastName = "Kelly";
-        String company = "Paddy's Pub";
-        String address = "544 Mateo Street";
-        String address2 = "";
-        String country = "United States";
-        String state = "California";
-        String city = "Los Angeles";
-        String zipCode = "90013";
-        String mobileNumber = "2136265731";
-
 //1. Launch browser
 //2. Navigate to url 'http://automationexercise.com'
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
@@ -46,7 +29,7 @@ public class TestCase1 extends BaseTest {
         verifyHeaderVisible(By.cssSelector(".signup-form h2"), "New User Signup!");
 
 //6. Enter name and email address
-        signUp(username, email);
+        signUp(testUser.getUsername(), testUser.getEmail());
 
 //7. Click 'Signup' button
         clickBtn(By.cssSelector("[data-qa='signup-button']"));
@@ -57,10 +40,10 @@ public class TestCase1 extends BaseTest {
 //9. Fill details: Title, Name, Email, Password, Date of birth
 //10. Select checkbox 'Sign up for our newsletter!'
 //11. Select checkbox 'Receive special offers from our partners!'
-        enterAccountInformation(password, day, month, year);
+        enterAccountInformation(testUser.getPassword(), testUser.getDay(), testUser.getMonth(), testUser.getYear());
 
 //12. Fill details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number
-        enterAddressInformation(firstName, lastName, company, address, address2, country, state, city, zipCode, mobileNumber);
+        enterAddressInformation(testUser.getFirstName(), testUser.getLastName(), testUser.getCompany(), testUser.getAddress(), testUser.getAddress2(), testUser.getCountry(), testUser.getState(), testUser.getCity(), testUser.getZipCode(), testUser.getMobileNumber());
 
 //13. Click 'Create Account button'
         clickBtn(By.cssSelector("[data-qa='create-account']"));
@@ -72,7 +55,7 @@ public class TestCase1 extends BaseTest {
         clickBtn(By.cssSelector("[data-qa='continue-button']"));
 
 //16. Verify that 'Logged in as username' is visible
-        verifyHeaderVisible(By.cssSelector(".navbar-nav li:last-child"), "Logged in as " + username);
+        verifyHeaderVisible(By.cssSelector(".navbar-nav li:last-child"), "Logged in as " + testUser.getUsername());
 
 //17. Click 'Delete Account' button
         clickBtn(By.linkText("Delete Account"));
