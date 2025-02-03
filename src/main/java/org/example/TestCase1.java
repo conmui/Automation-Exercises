@@ -28,6 +28,16 @@ public class TestCase1 {
         String day = "9";
         String month = "2";
         String year = "1976";
+        String firstName = "Charlie";
+        String lastName = "Kelly";
+        String company = "Paddy's Pub";
+        String address = "544 Mateo Street";
+        String address2 = "";
+        String country = "United States";
+        String state = "California";
+        String city = "Los Angeles";
+        String zipCode = "90013";
+        String mobileNumber = "2136265731";
 
 //1. Launch browser
 //2. Navigate to url 'http://automationexercise.com'
@@ -73,13 +83,35 @@ public class TestCase1 {
         selectOption(By.id("optin"));
 
 //12. Fill details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number
-//13. Click 'Create Account button'
-//14. Verify that 'ACCOUNT CREATED!' is visible
-//15. Click 'Continue' button
-//16. Verify that 'Logged in as username' is visible
-//17. Click 'Delete Account' button
-//18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
+        fillInput(By.cssSelector("[data-qa='first_name']"), firstName);
+        fillInput(By.cssSelector("[data-qa='last_name']"), lastName);
+        fillInput(By.cssSelector("[data-qa='company']"), company);
+        fillInput(By.cssSelector("[data-qa='address']"), address);
+        fillInput(By.cssSelector("[data-qa='address2']"), address2);
+        selectDropdown(By.cssSelector("[data-qa='country']"), country);
+        fillInput(By.cssSelector("[data-qa='state']"), state);
+        fillInput(By.cssSelector("[data-qa='city']"), city);
+        fillInput(By.cssSelector("[data-qa='zipcode']"), zipCode);
+        fillInput(By.cssSelector("[data-qa='mobile_number']"), mobileNumber);
 
+//13. Click 'Create Account button'
+        clickBtn(By.cssSelector("[data-qa='create-account']"));
+
+//14. Verify that 'ACCOUNT CREATED!' is visible
+        verifyHeaderVisible(By.cssSelector("[data-qa='account-created']"), "ACCOUNT CREATED!");
+
+//15. Click 'Continue' button
+        clickBtn(By.cssSelector("[data-qa='continue-button']"));
+
+//16. Verify that 'Logged in as username' is visible
+        verifyHeaderVisible(By.cssSelector(".navbar-nav li:last-child"), "Logged in as " + username);
+
+//17. Click 'Delete Account' button
+        clickBtn(By.linkText("Delete Account"));
+
+//18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
+        verifyHeaderVisible(By.cssSelector("[data-qa='account-deleted']"), "ACCOUNT DELETED!");
+        clickBtn(By.cssSelector("[data-qa='continue-button']"));
     }
 
     @AfterEach
