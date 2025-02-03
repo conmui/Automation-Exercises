@@ -9,6 +9,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
 public class TestCase1 {
     WebDriver driver;
 
@@ -22,6 +24,10 @@ public class TestCase1 {
     public void registerUserTest() {
         String username = "abck";
         String email = "abck@email.com";
+        String password = "itsalwayssunny";
+        String day = "9";
+        String month = "2";
+        String year = "1976";
 
 //1. Launch browser
 //2. Navigate to url 'http://automationexercise.com'
@@ -47,10 +53,25 @@ public class TestCase1 {
         fillInput(By.cssSelector("[data-qa='signup-email']"), email);
 
 //7. Click 'Signup' button
+        clickBtn(By.cssSelector("[data-qa='signup-button']"));
+
 //8. Verify that 'ENTER ACCOUNT INFORMATION' is visible
+        verifyHeaderVisible(By.cssSelector(".login-form h2"), "ENTER ACCOUNT INFORMATION");
+
 //9. Fill details: Title, Name, Email, Password, Date of birth
+        selectOption(By.id("uniform-id_gender1"));
+//        selectOption(By.id("uniform-id_gender2"));
+        fillInput(By.cssSelector("[data-qa='password']"), password);
+        selectDropdown(By.cssSelector("[data-qa='days']"), day);
+        selectDropdown(By.cssSelector("[data-qa='months']"), month);
+        selectDropdown(By.cssSelector("[data-qa='years']"), year);
+
 //10. Select checkbox 'Sign up for our newsletter!'
+        selectOption(By.id("newsletter"));
+
 //11. Select checkbox 'Receive special offers from our partners!'
+        selectOption(By.id("optin"));
+
 //12. Fill details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number
 //13. Click 'Create Account button'
 //14. Verify that 'ACCOUNT CREATED!' is visible
@@ -73,10 +94,10 @@ public class TestCase1 {
 
     public void verifyHeaderVisible(By locator, String expectedText) {
         WebElement headerElem = driver.findElement(locator);
-        boolean isHeaderVisible = headerElem.isDisplayed();
+        boolean isVisible = headerElem.isDisplayed();
         String headerText = headerElem.getText();
 
-        assertTrue(isHeaderVisible);
+        assertTrue(isVisible);
         assertEquals(expectedText, headerText);
     }
 
@@ -84,5 +105,17 @@ public class TestCase1 {
         WebElement inputField = driver.findElement(locator);
         inputField.clear();
         inputField.sendKeys(fieldValue);
+    }
+
+    public void selectOption(By locator) {
+        WebElement option = driver.findElement(locator);
+        boolean isChecked = option.isSelected();
+        if (!isChecked) { option.click(); }
+    }
+
+    public void selectDropdown(By locator, String fieldValue) {
+        WebElement dropdown = driver.findElement(locator);
+        Select select = new Select(dropdown);
+        select.selectByValue(fieldValue);
     }
 }
