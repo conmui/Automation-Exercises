@@ -33,10 +33,6 @@ public class TestCase3 extends BaseTest {
         clickBtn(By.cssSelector("[data-qa='login-button']"));
 
 //8. Verify error 'Your email or password is incorrect!' is visible
-        WebElement errorElem = driver.findElement(By.cssSelector(".login-form p"));
-        boolean isErrorVisible = errorElem.isDisplayed();
-        String errorText = errorElem.getText();
-        assertTrue(isErrorVisible);
-        assertEquals("Your email or password is incorrect!", errorText);
+        verifyErrorMessage(By.cssSelector(".login-form p[style*='color: red;']"), "Your email or password is incorrect!");
     }
 }
