@@ -22,6 +22,15 @@ public class BaseTest {
         driver.quit();
     }
 
+    public void verifyHomepageVisible() {
+        String title = driver.getTitle();
+        WebElement logoElement = driver.findElement(By.className("logo"));
+        boolean isLogoVisible = logoElement.isDisplayed();
+
+        assertEquals("Automation Exercise", title);
+        assertTrue(isLogoVisible);
+    }
+
     public void clickBtn(By locator) {
         WebElement button = driver.findElement(locator);
         button.click();

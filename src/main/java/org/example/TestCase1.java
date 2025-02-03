@@ -84,15 +84,6 @@ public class TestCase1 extends BaseTest {
         clickBtn(By.cssSelector("[data-qa='continue-button']"));
     }
 
-    private void verifyHomepageVisible() {
-        String title = driver.getTitle();
-        WebElement logoElement = driver.findElement(By.className("logo"));
-        boolean isLogoVisible = logoElement.isDisplayed();
-
-        assertEquals("Automation Exercise", title);
-        assertTrue(isLogoVisible);
-    }
-
     private void enterAccountInformation(String password, String day, String month, String year) {
         selectOption(By.id("uniform-id_gender1"));
 //        selectOption(By.id("uniform-id_gender2"));
