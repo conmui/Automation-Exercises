@@ -37,25 +37,14 @@ public class TestCase1 {
         assertTrue(isLogoVisible);
 
 //4. Click on 'Signup / Login' button
-        WebElement signupLoginButton = driver.findElement(By.linkText("Signup / Login"));
-        signupLoginButton.click();
+        clickBtn(By.linkText("Signup / Login"));
 
 //5. Verify 'New User Signup!' is visible
-        WebElement newUserHeader = driver.findElement(By.cssSelector(".signup-form h2"));
-        boolean isNewUserHeaderVisible = newUserHeader.isDisplayed();
-        String newUserText = newUserHeader.getText();
-
-        assertTrue(isNewUserHeaderVisible);
-        assertEquals("New User Signup!", newUserText);
+        verifyHeaderVisible(By.cssSelector(".signup-form h2"), "New User Signup!");
 
 //6. Enter name and email address
-        WebElement usernameInput = driver.findElement(By.cssSelector("[data-qa='signup-name']"));
-        WebElement emailInput = driver.findElement(By.cssSelector("[data-qa='signup-email']"));
-
-        usernameInput.clear();
-        usernameInput.sendKeys(username);
-        emailInput.clear();
-        emailInput.sendKeys(email);
+        fillInput(By.cssSelector("[data-qa='signup-name']"), username);
+        fillInput(By.cssSelector("[data-qa='signup-email']"), email);
 
 //7. Click 'Signup' button
 //8. Verify that 'ENTER ACCOUNT INFORMATION' is visible
@@ -75,5 +64,25 @@ public class TestCase1 {
     @AfterEach
     public void teardown() {
         driver.quit();
+    }
+
+    public void clickBtn(By locator) {
+        WebElement button = driver.findElement(locator);
+        button.click();
+    }
+
+    public void verifyHeaderVisible(By locator, String expectedText) {
+        WebElement headerElem = driver.findElement(locator);
+        boolean isHeaderVisible = headerElem.isDisplayed();
+        String headerText = headerElem.getText();
+
+        assertTrue(isHeaderVisible);
+        assertEquals(expectedText, headerText);
+    }
+
+    public void fillInput(By locator, String fieldValue) {
+        WebElement inputField = driver.findElement(locator);
+        inputField.clear();
+        inputField.sendKeys(fieldValue);
     }
 }
