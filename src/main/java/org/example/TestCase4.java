@@ -1,5 +1,4 @@
 package org.example;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import java.time.Duration;
 import org.junit.jupiter.api.Test;
@@ -42,8 +41,7 @@ public class TestCase4 extends BaseTest {
     }
 
     private void verifyLoginPageVisible(String loggedInStatus) {
-        String title = driver.getTitle();
-        assertEquals("Automation Exercise - Signup / Login", title);
+        verifyPageTitle("Automation Exercise - Signup / Login");
 
         verifyHeaderVisible(By.cssSelector(".login-form h2"), "Login to your account");
 

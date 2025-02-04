@@ -26,12 +26,17 @@ public class BaseTest {
         driver.quit();
     }
 
-    public void verifyHomepageVisible() {
+    public void verifyPageTitle(String expectedText) {
         String title = driver.getTitle();
+        assertEquals(expectedText, title);
+    }
+
+    public void verifyHomepageVisible() {
+        verifyPageTitle("Automation Exercise");
+//        String title = driver.getTitle();
+//        assertEquals("Automation Exercise", title);
         WebElement logoElement = driver.findElement(By.className("logo"));
         boolean isLogoVisible = logoElement.isDisplayed();
-
-        assertEquals("Automation Exercise", title);
         assertTrue(isLogoVisible);
     }
 
@@ -84,4 +89,6 @@ public class BaseTest {
         assertTrue(isMessageVisible);
         assertEquals(expectedText, messageText);
     }
+
+
 }
