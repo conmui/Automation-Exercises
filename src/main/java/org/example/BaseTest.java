@@ -31,12 +31,15 @@ public class BaseTest {
         assertEquals(expectedText, title);
     }
 
+    public void verifyElementVisible(By locator) {
+        WebElement element = driver.findElement(locator);
+        boolean isElementVisible = element.isDisplayed();
+        assertTrue(isElementVisible);
+    }
+
     public void verifyHomepageVisible() {
         verifyPageTitle("Automation Exercise");
-
-        WebElement logoElement = driver.findElement(By.className("logo"));
-        boolean isLogoVisible = logoElement.isDisplayed();
-        assertTrue(isLogoVisible);
+        verifyElementVisible(By.className("logo"));
     }
 
     public void clickBtn(By locator) {
@@ -46,15 +49,15 @@ public class BaseTest {
 
     public void verifyHeaderVisible(By locator, String expectedText) {
         WebElement headerElem = driver.findElement(locator);
-        boolean isVisible = headerElem.isDisplayed();
         String headerText = headerElem.getText();
 
-        assertTrue(isVisible);
+        verifyElementVisible(locator);
         assertEquals(expectedText, headerText);
     }
 
     public void fillInput(By locator, String fieldValue) {
         WebElement inputField = driver.findElement(locator);
+
         inputField.clear();
         inputField.sendKeys(fieldValue);
     }
@@ -62,12 +65,16 @@ public class BaseTest {
     public void selectOption(By locator) {
         WebElement option = driver.findElement(locator);
         boolean isChecked = option.isSelected();
-        if (!isChecked) { option.click(); }
+
+        if (!isChecked) {
+            option.click();
+        }
     }
 
     public void selectDropdown(By locator, String fieldValue) {
         WebElement dropdown = driver.findElement(locator);
         Select select = new Select(dropdown);
+
         select.selectByValue(fieldValue);
     }
 
@@ -83,9 +90,9 @@ public class BaseTest {
 
     public void verifyNotificationMessage(By locator, String expectedText) {
         WebElement messageElem = driver.findElement(locator);
-        boolean isMessageVisible = messageElem.isDisplayed();
         String messageText = messageElem.getText();
-        assertTrue(isMessageVisible);
+
+        verifyElementVisible(locator);
         assertEquals(expectedText, messageText);
     }
 
