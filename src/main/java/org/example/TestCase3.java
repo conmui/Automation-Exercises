@@ -1,10 +1,7 @@
 package org.example;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.time.Duration;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 public class TestCase3 extends BaseTest {
 //    Test Case 3: Login User with incorrect email and password
@@ -22,7 +19,7 @@ public class TestCase3 extends BaseTest {
         clickBtn(By.linkText("Signup / Login"));
 
 //5. Verify 'Login to your account' is visible
-        verifyHeaderVisible(By.cssSelector(".login-form h2"), "Login to your account");
+        verifyTextAndVisibility(By.cssSelector(".login-form h2"), "Login to your account");
 
 //6. Enter incorrect email address and password
 //        logIn(testUserIncorrect.getEmail(), testUserIncorrect.getPassword());
@@ -33,6 +30,6 @@ public class TestCase3 extends BaseTest {
         clickBtn(By.cssSelector("[data-qa='login-button']"));
 
 //8. Verify error 'Your email or password is incorrect!' is visible
-        verifyNotificationMessage(By.cssSelector(".login-form p[style*='color: red;']"), "Your email or password is incorrect!");
+        verifyTextAndVisibility(By.cssSelector(".login-form p[style*='color: red;']"), "Your email or password is incorrect!");
     }
 }

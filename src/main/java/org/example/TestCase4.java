@@ -22,7 +22,7 @@ public class TestCase4 extends BaseTest {
         clickBtn(By.linkText("Signup / Login"));
 
 //5. Verify 'Login to your account' is visible
-        verifyHeaderVisible(By.cssSelector(".login-form h2"), "Login to your account");
+        verifyTextAndVisibility(By.cssSelector(".login-form h2"), "Login to your account");
 
 //6. Enter correct email address and password
         logIn(testUser.getEmail(), testUser.getPassword());
@@ -31,7 +31,7 @@ public class TestCase4 extends BaseTest {
         clickBtn(By.cssSelector("[data-qa='login-button']"));
 
 //8. Verify that 'Logged in as username' is visible
-        verifyHeaderVisible(By.cssSelector(".navbar-nav li:last-child"), loggedInStatus);
+        verifyTextAndVisibility(By.cssSelector(".navbar-nav li:last-child"), loggedInStatus);
 
 //9. Click 'Logout' button
         clickBtn(By.linkText("Logout"));
@@ -41,12 +41,11 @@ public class TestCase4 extends BaseTest {
     }
 
     private void verifyLoginPageVisible(String loggedInStatus) {
-        verifyPageTitle("Automation Exercise - Signup / Login");
-
-        verifyHeaderVisible(By.cssSelector(".login-form h2"), "Login to your account");
-
-        //check "Logged in as <username>" does not show indicating user has logged out
         String lastNavbarItem = driver.findElement(By.cssSelector(".navbar-nav li:last-child")).getText();
+
+        verifyPageTitle("Automation Exercise - Signup / Login");
+        verifyTextAndVisibility(By.cssSelector(".login-form h2"), "Login to your account");
+        //check "Logged in as <username>" does not show indicating user has logged out
         assertNotEquals(loggedInStatus, lastNavbarItem);
     }
 }

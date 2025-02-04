@@ -25,7 +25,7 @@ public class TestCase6 extends BaseTest {
         clickBtn(By.linkText("Contact us"));
 
 //5. Verify 'GET IN TOUCH' is visible
-        verifyHeaderVisible(By.cssSelector(".contact-form .title"), "GET IN TOUCH");
+        verifyTextAndVisibility(By.cssSelector(".contact-form .title"), "GET IN TOUCH");
 
 //6. Enter name, email, subject and message
         fillInput(By.cssSelector("[data-qa='name']"), testUser.getFirstName() + " " + testUser.getLastName());
@@ -45,11 +45,10 @@ public class TestCase6 extends BaseTest {
         alert.accept();
 
 //10. Verify success message 'Success! Your details have been submitted successfully.' is visible
-        verifyNotificationMessage(By.cssSelector(".contact-form .alert-success"), "Success! Your details have been submitted successfully.");
+        verifyTextAndVisibility(By.cssSelector(".contact-form .alert-success"), "Success! Your details have been submitted successfully.");
 
 //11. Click 'Home' button and verify that landed to home page successfully
         clickBtn(By.linkText("Home"));
-
         verifyHomepageVisible();
     }
 }

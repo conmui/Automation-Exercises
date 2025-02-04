@@ -20,11 +20,11 @@ public class TestCase8 extends BaseTest {
         verifyHomepageVisible();
 
 //4. Click on 'Products' button
-        clickBtn(By.cssSelector(".nav a[href='/products']"));
+        clickBtn(By.partialLinkText("Products"));
 
 //5. Verify user is navigated to ALL PRODUCTS page successfully
         verifyPageTitle("Automation Exercise - All Products");
-        verifyHeaderVisible(By.cssSelector("h2.title"), "ALL PRODUCTS");
+        verifyTextAndVisibility(By.cssSelector("h2.title"), "ALL PRODUCTS");
 
 //6. The products list is visible
         verifyElementVisible(By.cssSelector(".features_items"));
@@ -54,9 +54,9 @@ public class TestCase8 extends BaseTest {
 
     public void verifyProductName(By locator, String fromAllProductsPage) {
         verifyElementVisible(locator);
+        String fromProductDetailsPage = driver.findElement(locator).getText();
 
         //ensures the product name matches the one chosen from the previous ('All Products') page
-        String fromProductDetailsPage = driver.findElement(locator).getText();
         assertEquals(fromAllProductsPage, fromProductDetailsPage);
     }
 }

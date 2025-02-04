@@ -26,7 +26,7 @@ public class TestCase1 extends BaseTest {
         clickBtn(By.linkText("Signup / Login"));
 
 //5. Verify 'New User Signup!' is visible
-        verifyHeaderVisible(By.cssSelector(".signup-form h2"), "New User Signup!");
+        verifyTextAndVisibility(By.cssSelector(".signup-form h2"), "New User Signup!");
 
 //6. Enter name and email address
         signUp(testUser.getUsername(), testUser.getEmail());
@@ -35,7 +35,7 @@ public class TestCase1 extends BaseTest {
         clickBtn(By.cssSelector("[data-qa='signup-button']"));
 
 //8. Verify that 'ENTER ACCOUNT INFORMATION' is visible
-        verifyHeaderVisible(By.cssSelector(".login-form h2"), "ENTER ACCOUNT INFORMATION");
+        verifyTextAndVisibility(By.cssSelector(".login-form h2"), "ENTER ACCOUNT INFORMATION");
 
 //9. Fill details: Title, Name, Email, Password, Date of birth
 //10. Select checkbox 'Sign up for our newsletter!'
@@ -49,19 +49,19 @@ public class TestCase1 extends BaseTest {
         clickBtn(By.cssSelector("[data-qa='create-account']"));
 
 //14. Verify that 'ACCOUNT CREATED!' is visible
-        verifyHeaderVisible(By.cssSelector("[data-qa='account-created']"), "ACCOUNT CREATED!");
+        verifyTextAndVisibility(By.cssSelector("[data-qa='account-created']"), "ACCOUNT CREATED!");
 
 //15. Click 'Continue' button
         clickBtn(By.cssSelector("[data-qa='continue-button']"));
 
 //16. Verify that 'Logged in as username' is visible
-        verifyHeaderVisible(By.cssSelector(".navbar-nav li:last-child"), "Logged in as " + testUser.getUsername());
+        verifyTextAndVisibility(By.cssSelector(".navbar-nav li:last-child"), "Logged in as " + testUser.getUsername());
 
 //17. Click 'Delete Account' button
         clickBtn(By.linkText("Delete Account"));
 
 //18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
-        verifyHeaderVisible(By.cssSelector("[data-qa='account-deleted']"), "ACCOUNT DELETED!");
+        verifyTextAndVisibility(By.cssSelector("[data-qa='account-deleted']"), "ACCOUNT DELETED!");
         clickBtn(By.cssSelector("[data-qa='continue-button']"));
     }
 

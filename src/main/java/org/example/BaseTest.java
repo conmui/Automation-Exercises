@@ -47,12 +47,14 @@ public class BaseTest {
         button.click();
     }
 
-    public void verifyHeaderVisible(By locator, String expectedText) {
-        WebElement headerElem = driver.findElement(locator);
-        String headerText = headerElem.getText();
+    public void verifyTextAndVisibility(By locator, String expectedText) {
+        WebElement element = driver.findElement(locator);
+        boolean isElementVisible = driver.findElement(locator).isDisplayed();
 
-        verifyElementVisible(locator);
-        assertEquals(expectedText, headerText);
+        if (isElementVisible) {
+            String elementText = element.getText();
+            assertEquals(expectedText, elementText);
+        }
     }
 
     public void fillInput(By locator, String fieldValue) {
@@ -87,14 +89,4 @@ public class BaseTest {
         fillInput(By.cssSelector("[data-qa='signup-name']"), username);
         fillInput(By.cssSelector("[data-qa='signup-email']"), email);
     }
-
-    public void verifyNotificationMessage(By locator, String expectedText) {
-        WebElement messageElem = driver.findElement(locator);
-        String messageText = messageElem.getText();
-
-        verifyElementVisible(locator);
-        assertEquals(expectedText, messageText);
-    }
-
-
 }

@@ -19,7 +19,7 @@ public class TestCase2 extends BaseTest {
         clickBtn(By.linkText("Signup / Login"));
 
 //5. Verify 'Login to your account' is visible
-        verifyHeaderVisible(By.cssSelector(".login-form h2"), "Login to your account");
+        verifyTextAndVisibility(By.cssSelector(".login-form h2"), "Login to your account");
 
 //6. Enter correct email address and password
         logIn(testUser.getEmail(), testUser.getPassword());
@@ -28,12 +28,12 @@ public class TestCase2 extends BaseTest {
         clickBtn(By.cssSelector("[data-qa='login-button']"));
 
 //8. Verify that 'Logged in as username' is visible
-        verifyHeaderVisible(By.cssSelector(".navbar-nav li:last-child"), "Logged in as " + testUser.getUsername());
+        verifyTextAndVisibility(By.cssSelector(".navbar-nav li:last-child"), "Logged in as " + testUser.getUsername());
 
 //9. Click 'Delete Account' button
         clickBtn(By.linkText("Delete Account"));
 
 //10. Verify that 'ACCOUNT DELETED!' is visible
-        verifyHeaderVisible(By.cssSelector("[data-qa='account-deleted']"), "ACCOUNT DELETED!");
+        verifyTextAndVisibility(By.cssSelector("[data-qa='account-deleted']"), "ACCOUNT DELETED!");
     }
 }

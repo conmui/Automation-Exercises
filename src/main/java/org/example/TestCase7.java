@@ -20,6 +20,6 @@ public class TestCase7 extends BaseTest {
 
 //5. Verify user is navigated to test cases page successfully
         verifyPageTitle("Automation Practice Website for UI Testing - Test Cases");
-        verifyHeaderVisible(By.cssSelector("h2.title"), "TEST CASES");
+        verifyTextAndVisibility(By.cssSelector("h2.title"), "TEST CASES");
     }
 }

@@ -19,7 +19,7 @@ public class TestCase5 extends BaseTest {
         clickBtn(By.linkText("Signup / Login"));
 
 //5. Verify 'New User Signup!' is visible
-        verifyHeaderVisible(By.cssSelector(".signup-form h2"), "New User Signup!");
+        verifyTextAndVisibility(By.cssSelector(".signup-form h2"), "New User Signup!");
 
 //6. Enter name and already registered email address
         signUp(testUser.getUsername(), testUser.getEmail());
@@ -28,6 +28,6 @@ public class TestCase5 extends BaseTest {
         clickBtn(By.cssSelector("[data-qa='signup-button']"));
 
 //8. Verify error 'Email Address already exist!' is visible
-        verifyNotificationMessage(By.cssSelector(".signup-form p[style*='color: red;']"), "Email Address already exist!");
+        verifyTextAndVisibility(By.cssSelector(".signup-form p[style*='color: red;']"), "Email Address already exist!");
     }
 }
