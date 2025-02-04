@@ -33,6 +33,6 @@ public class TestCase3 extends BaseTest {
         clickBtn(By.cssSelector("[data-qa='login-button']"));
 
 //8. Verify error 'Your email or password is incorrect!' is visible
-        verifyErrorMessage(By.cssSelector(".login-form p[style*='color: red;']"), "Your email or password is incorrect!");
+        verifyNotificationMessage(By.cssSelector(".login-form p[style*='color: red;']"), "Your email or password is incorrect!");
     }
 }

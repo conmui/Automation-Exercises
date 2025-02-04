@@ -77,11 +77,11 @@ public class BaseTest {
         fillInput(By.cssSelector("[data-qa='signup-email']"), email);
     }
 
-    public void verifyErrorMessage(By locator, String expectedText) {
-        WebElement errorElem = driver.findElement(locator);
-        boolean isErrorVisible = errorElem.isDisplayed();
-        String errorText = errorElem.getText();
-        assertTrue(isErrorVisible);
-        assertEquals(expectedText, errorText);
+    public void verifyNotificationMessage(By locator, String expectedText) {
+        WebElement messageElem = driver.findElement(locator);
+        boolean isMessageVisible = messageElem.isDisplayed();
+        String messageText = messageElem.getText();
+        assertTrue(isMessageVisible);
+        assertEquals(expectedText, messageText);
     }
 }

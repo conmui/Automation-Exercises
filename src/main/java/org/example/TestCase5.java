@@ -28,6 +28,6 @@ public class TestCase5 extends BaseTest {
         clickBtn(By.cssSelector("[data-qa='signup-button']"));
 
 //8. Verify error 'Email Address already exist!' is visible
-        verifyErrorMessage(By.cssSelector(".signup-form p[style*='color: red;']"), "Email Address already exist!");
+        verifyNotificationMessage(By.cssSelector(".signup-form p[style*='color: red;']"), "Email Address already exist!");
     }
 }
