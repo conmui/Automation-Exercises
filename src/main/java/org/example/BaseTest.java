@@ -33,8 +33,7 @@ public class BaseTest {
 
     public void verifyHomepageVisible() {
         verifyPageTitle("Automation Exercise");
-//        String title = driver.getTitle();
-//        assertEquals("Automation Exercise", title);
+
         WebElement logoElement = driver.findElement(By.className("logo"));
         boolean isLogoVisible = logoElement.isDisplayed();
         assertTrue(isLogoVisible);
